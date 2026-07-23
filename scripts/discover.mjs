@@ -26,7 +26,7 @@ const dataPath = resolve(here, "../data/projects.json");
 const args = process.argv.slice(2);
 const write = args.includes("--write");
 const maxArg = args.find((a) => a.startsWith("--max="));
-const max = maxArg ? Number(maxArg.split("=")[1]) : 100;
+const max = maxArg ? Number(maxArg.split("=")[1]) : 10000;
 
 const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
 
@@ -39,42 +39,87 @@ function headers() {
   return h;
 }
 
-async function ghFetch(url) {
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+async function ghFetch(url, attempt = 0) {
   const res = await fetch(url, { headers: headers() });
-  if (res.status === 403 && res.headers.get("x-ratelimit-remaining") === "0") {
+
+  if (res.status === 403 || res.status === 429) {
+    const remaining = res.headers.get("x-ratelimit-remaining");
+    const retryAfter = Number(res.headers.get("retry-after"));
     const reset = Number(res.headers.get("x-ratelimit-reset")) * 1000;
+    // Primary or secondary rate limit — wait and retry a bounded number of times.
+    let waitMs = 0;
+    if (retryAfter) waitMs = retryAfter * 1000;
+    else if (remaining === "0" && reset) waitMs = Math.max(0, reset - Date.now());
+    else waitMs = 5000 * (attempt + 1);
+
+    if (attempt < 6 && waitMs <= 120000) {
+      console.log(`  rate limited, waiting ${Math.ceil(waitMs / 1000)}s…`);
+      await sleep(waitMs + 500);
+      return ghFetch(url, attempt + 1);
+    }
     throw new Error(
-      `GitHub rate limit exceeded. Resets at ${new Date(reset).toISOString()}. ` +
+      `GitHub rate limit exceeded (status ${res.status}). ` +
+        `Reset at ${reset ? new Date(reset).toISOString() : "unknown"}. ` +
         `Set GITHUB_TOKEN to raise the limit.`,
     );
   }
+
   if (!res.ok) {
     throw new Error(`GitHub API ${res.status}: ${await res.text()}`);
   }
   return res.json();
 }
 
+// The Commit Search API caps results at 1000 (10 pages x 100). To go beyond
+// that we page through time windows: within each window we sort by
+// committer-date desc, then start the next window just before the oldest
+// commit we saw. Repeat until no more commits or we reach `max`.
 async function findRepos() {
   const repos = new Map();
   const perPage = 100;
-  let page = 1;
+  let until = null; // ISO instant; only commits strictly before this are searched
+  let window = 0;
 
-  while (repos.size < max && page <= 10) {
-    const q = encodeURIComponent(`author:${BOT_LOGIN}`);
-    const url = `https://api.github.com/search/commits?q=${q}&per_page=${perPage}&page=${page}`;
-    const data = await ghFetch(url);
-    const items = data.items ?? [];
-    if (items.length === 0) break;
+  while (repos.size < max && window < 200) {
+    window += 1;
+    let oldest = null;
+    let pagesFetched = 0;
 
-    for (const item of items) {
-      const repo = item.repository;
-      if (repo && !repo.private && !repos.has(repo.full_name)) {
-        repos.set(repo.full_name, repo);
+    for (let page = 1; page <= 10 && repos.size < max; page += 1) {
+      const qualifier = until ? ` committer-date:<${until}` : "";
+      const q = encodeURIComponent(`author:${BOT_LOGIN}${qualifier}`);
+      const url =
+        `https://api.github.com/search/commits?q=${q}` +
+        `&sort=committer-date&order=desc&per_page=${perPage}&page=${page}`;
+      const data = await ghFetch(url);
+      const items = data.items ?? [];
+      pagesFetched += 1;
+      if (items.length === 0) break;
+
+      for (const item of items) {
+        const repo = item.repository;
+        if (repo && !repo.private && !repos.has(repo.full_name)) {
+          repos.set(repo.full_name, repo);
+        }
+        const date = item.commit?.committer?.date || item.commit?.author?.date;
+        if (date && (!oldest || date < oldest)) oldest = date;
       }
+
+      await sleep(2200); // stay under the ~30 req/min commit-search limit
+      if (items.length < perPage) break;
     }
 
-    if (items.length < perPage) break;
-    page += 1;
+    console.log(
+      `  window ${window}: ${repos.size} unique repo(s) so far` +
+        (until ? ` (before ${until})` : ""),
+    );
+
+    // Stop when a window returned less than a full page set or we can't advance.
+    if (pagesFetched < 10 || !oldest || oldest === until) break;
+    // Next window ends 1 second before the oldest commit seen (avoid re-reading it).
+    until = new Date(new Date(oldest).getTime() - 1000).toISOString();
   }
 
   return Array.from(repos.values()).slice(0, max);
