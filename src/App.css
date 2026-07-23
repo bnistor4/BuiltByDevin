@@ -1,12 +1,20 @@
 .page {
-  max-width: 960px;
+  max-width: 1040px;
   margin: 0 auto;
   padding: 2.5rem 1.25rem 4rem;
 }
 
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 .hero h1 {
   font-size: 2.4rem;
-  margin: 0 0 0.5rem;
+  margin: 0;
+  letter-spacing: -0.02em;
 }
 
 .hero .accent {
@@ -15,8 +23,24 @@
 
 .hero p {
   color: var(--muted);
-  margin: 0;
+  margin: 0.5rem 0 0;
   max-width: 60ch;
+}
+
+.theme-toggle {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  white-space: nowrap;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
 }
 
 .controls {
@@ -34,16 +58,42 @@
   border-radius: 8px;
   padding: 0.55rem 0.75rem;
   font-size: 0.95rem;
+  box-shadow: var(--shadow);
 }
 
 .controls input {
   flex: 1 1 240px;
 }
 
+.controls input:focus,
+.controls select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.clear {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 8px;
+  padding: 0 0.85rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.clear:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
 .count {
   color: var(--muted);
   font-size: 0.85rem;
   margin: 0 0 1rem;
+}
+
+.count-page {
+  opacity: 0.8;
 }
 
 .grid {
@@ -63,6 +113,13 @@
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
 }
 
 .card-head {
@@ -78,11 +135,16 @@
   text-decoration: none;
 }
 
+.card-title:hover {
+  text-decoration: underline;
+}
+
 .badge {
   font-size: 0.68rem;
-  color: #0b0d12;
+  font-weight: 600;
+  color: var(--accent-contrast);
   background: var(--accent);
-  padding: 0.15rem 0.45rem;
+  padding: 0.15rem 0.5rem;
   border-radius: 999px;
   white-space: nowrap;
 }
@@ -91,7 +153,11 @@
   color: var(--text);
   margin: 0;
   font-size: 0.92rem;
-  line-height: 1.4;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .card-meta {
@@ -99,6 +165,7 @@
   flex-wrap: wrap;
   gap: 0.4rem;
   align-items: center;
+  margin-top: auto;
 }
 
 .lang {
@@ -126,6 +193,35 @@
   margin: 0;
   color: var(--muted);
   font-size: 0.72rem;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.pagination button {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+.pagination button:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .empty {
