@@ -1,0 +1,11 @@
+[
+  {
+    "name": "BuiltByDevin",
+    "url": "https://github.com/bnistor4/BuiltByDevin",
+    "description": "A curated directory of GitHub projects built with Devin.",
+    "language": "TypeScript",
+    "tags": ["ai", "directory", "developer-tools"],
+    "devin_collaborator": true,
+    "submitted_by": "bnistor4"
+  }
+]

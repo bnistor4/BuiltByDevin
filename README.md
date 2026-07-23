@@ -42,6 +42,34 @@ Projects can also be added manually. To submit a project:
 | `devin_collaborator` | boolean | no | Whether `devin-ai-integration[bot]` is a collaborator (default: `false` for manual entries) |
 | `submitted_by` | string | yes | GitHub username of the submitter |
 
+## The directory app
+
+This repo also ships a small web app (Vite + React + TypeScript) that renders the
+directory from `data/projects.json`, with search and filtering by language and tag.
+
+```bash
+npm install
+npm run dev        # start the dev server
+npm run build      # type-check + production build to dist/
+npm run test       # run unit tests (vitest)
+npm run validate   # validate data/projects.json against the schema
+```
+
+### Discovery script
+
+`npm run discover` scans GitHub for repositories with commits by the
+`devin-ai-integration[bot]` account and merges new entries into
+`data/projects.json`.
+
+```bash
+GITHUB_TOKEN=<token> npm run discover           # dry run
+GITHUB_TOKEN=<token> npm run discover -- --write # persist changes
+```
+
+GitHub does not expose a public API to list every repo where a user is a
+*collaborator* (that needs push access to each repo), so discovery uses the
+Commit Search API as a public proxy for Devin's involvement.
+
 ## Contributing
 
 Contributions are welcome. Whether you're adding a new project, fixing a typo, or improving the indexing logic, please open a pull request or an issue.
