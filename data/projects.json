@@ -4,8 +4,222 @@
     "url": "https://github.com/bnistor4/BuiltByDevin",
     "description": "A curated directory of GitHub projects built with Devin.",
     "language": "TypeScript",
-    "tags": ["ai", "directory", "developer-tools"],
+    "tags": [
+      "ai",
+      "directory",
+      "developer-tools"
+    ],
     "devin_collaborator": true,
     "submitted_by": "bnistor4"
+  },
+  {
+    "name": "trade",
+    "url": "https://github.com/Moksha89/trade",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "study",
+    "url": "https://github.com/orangeman7201/study",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "lobe-chat",
+    "url": "https://github.com/w111010/lobe-chat",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "mdxe-v1",
+    "url": "https://github.com/ai-primitives/mdxe-v1",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "confusable-homoglyphs-feedstock",
+    "url": "https://github.com/conda-forge/confusable-homoglyphs-feedstock",
+    "description": "A conda-smithy repository for confusable-homoglyphs.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "replicated",
+    "url": "https://github.com/replicatedhq/replicated",
+    "description": "A CLI to create, edit and promote releases in Replicated",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "browserless-mcp",
+    "url": "https://github.com/browserless/browserless-mcp",
+    "description": "Official MCP server for the Browserless.io",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "QueryCraft",
+    "url": "https://github.com/RkShanks/QueryCraft",
+    "description": "Enterprise Text-to-SQL platform converting natural language queries into SQL across multiple databases. Features secure, scalable architecture with validation, audit logging, and regional compliance. Supports cloud/local LLMs, automated reporting, and extensible design for enterprise analytics.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "samrst",
+    "url": "https://github.com/samrst/samrst",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "AI-Chatbot",
+    "url": "https://github.com/rifahh-5/AI-Chatbot",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "class-6-maths",
+    "url": "https://github.com/sunkarakrwutarth9-ai/class-6-maths",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "cubic-cal_dot_com",
+    "url": "https://github.com/AI-Code-Review-Evals/cubic-cal_dot_com",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "Hackathon-TON",
+    "url": "https://github.com/Sansay411/Hackathon-TON",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "cornerstone3d-mobile",
+    "url": "https://github.com/xionghailong1205/cornerstone3d-mobile",
+    "description": "手机端 定制版 Cornerstone3D",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "inspector",
+    "url": "https://github.com/ForwardBuddy/inspector",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "nexcore-website",
+    "url": "https://github.com/NexCore-MS/nexcore-website",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "mlbshell",
+    "url": "https://github.com/teddyray63/mlbshell",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "op-fork",
+    "url": "https://github.com/cpay-dev/op-fork",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "antibody-antigen-analysis-notebook",
+    "url": "https://github.com/aixus-solutions-1/antibody-antigen-analysis-notebook",
+    "description": "An antibody/antigen structure analysis workbook",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "MagicQuillV2",
+    "url": "https://github.com/manat0912/MagicQuillV2",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "harness-engineering",
+    "url": "https://github.com/ThinhTP204/harness-engineering",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "hanbridge",
+    "url": "https://github.com/whitelotus-web/hanbridge",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "seo-automation",
+    "url": "https://github.com/nmoraeslima/seo-automation",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "vibe",
+    "url": "https://github.com/lanly-dev/vibe",
+    "description": "Vibe code with github copilot",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "arcmail",
+    "url": "https://github.com/radityprtama/arcmail",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "agentic-ethereum-hack",
+    "url": "https://github.com/RaveenaBhasin/agentic-ethereum-hack",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "GPT_Nano",
+    "url": "https://github.com/Soham4001A/GPT_Nano",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "Flighttimeappandroid",
+    "url": "https://github.com/GIANLUIGI67/Flighttimeappandroid",
+    "description": "No description provided.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "repository-harness",
+    "url": "https://github.com/hoangnb24/repository-harness",
+    "description": "Turn any repo into an agent-ready workspace for Claude Code, Codex, Cursor, and other coding agents.",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
+  },
+  {
+    "name": "musicfy",
+    "url": "https://github.com/stevbell123/musicfy",
+    "description": "Mobile",
+    "devin_collaborator": true,
+    "submitted_by": "devin-discovery"
   }
 ]
